@@ -1,0 +1,8 @@
+html,
+body {
+  color: azure;
+  background-color: #21232a;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.3rem;
+  padding: 40px;
+}
