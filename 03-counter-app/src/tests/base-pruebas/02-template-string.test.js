@@ -1,4 +1,4 @@
-import moduleName from '@testing-library/jest-dom';
+import '@testing-library/jest-dom';
 import {getSaludo} from '../../base-pruebas/02-template-string';
 
 describe('Pruebas en 02-template-string.js', () => {
