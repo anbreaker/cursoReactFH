@@ -5,7 +5,7 @@ import {GifGrid} from './components/GifGrid';
 // Functional Component
 
 const GifExpertApp = () => {
-  const [categories, setCategories] = useState(['Futurama']);
+  const [categories, setCategories] = useState(['Dragon Ball']);
 
   return (
     <>
