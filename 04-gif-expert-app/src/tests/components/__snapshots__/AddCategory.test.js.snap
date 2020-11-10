@@ -4,6 +4,7 @@ exports[`Pruebas en el componente debe de mostrarse correctamente 1`] = `
 <form
   onSubmit={[Function]}
 >
+  <p />
   <input
     onChange={[Function]}
     placeholder="Search"
