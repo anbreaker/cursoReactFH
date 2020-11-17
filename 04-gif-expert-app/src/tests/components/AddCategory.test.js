@@ -4,8 +4,15 @@ import {shallow} from 'enzyme';
 import {AddCategory} from '../../components/AddCategory';
 
 describe('Pruebas en el componente', () => {
-  const setCategories = () => {};
-  const wrapper = shallow(<AddCategory setCategories={setCategories} />);
+  const setCategories = jest.fn();
+
+  // La doble inicializacion es para conservar la ayuda del vscode
+  let wrapper = shallow(<AddCategory setCategories={setCategories} />);
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    wrapper = shallow(<AddCategory setCategories={setCategories} />);
+  });
 
   test('debe de mostrarse correctamente', () => {
     expect(wrapper).toMatchSnapshot();
@@ -18,5 +25,9 @@ describe('Pruebas en el componente', () => {
     input.simulate('change', {target: {value}});
 
     expect(wrapper.find('p').text().trim()).toBe(value);
+  });
+
+  test('No debe de postear la informacion con submit ', () => {
+    expect(setCategories).not.toHaveBeenCalled();
   });
 });
