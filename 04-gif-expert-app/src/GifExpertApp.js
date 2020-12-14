@@ -4,8 +4,9 @@ import {GifGrid} from './components/GifGrid';
 
 // Functional Component
 
-const GifExpertApp = () => {
-  const [categories, setCategories] = useState(['Dragon Ball']);
+export const GifExpertApp = ({defaultCategories = []}) => {
+  // const [categories, setCategories] = useState(['Dragon Ball']);
+  const [categories, setCategories] = useState(defaultCategories);
 
   return (
     <>
@@ -14,12 +15,10 @@ const GifExpertApp = () => {
       <hr />
 
       <ol>
-        {categories.map((category) => {
-          return <GifGrid key={category} category={category} />;
-        })}
+        {categories.map((category) => (
+          <GifGrid key={category} category={category} />
+        ))}
       </ol>
     </>
   );
 };
-
-export default GifExpertApp;
