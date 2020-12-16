@@ -12,20 +12,22 @@ export const CounterApp = () => {
   // console.log(counter);
 
   return (
-    <div className="container">
-      <h1>Counter {counter1}</h1>
-      <h1>Counter {counter2}</h1>
-      <hr />
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          setState({
-            ...state,
-            counter1: counter1 + 1,
-          });
-        }}>
-        +1
-      </button>
-    </div>
+    <>
+      <div className="container">
+        <h1>Counter {counter1}</h1>
+        <h1>Counter {counter2}</h1>
+        <hr />
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            setState({
+              ...state,
+              counter1: counter1 + 1,
+            });
+          }}>
+          +1
+        </button>
+      </div>
+    </>
   );
 };
