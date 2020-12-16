@@ -8,7 +8,7 @@ export const MultipleUseHooks = () => {
   const {loading, data} = useFetch(
     `https://www.breakingbadapi.com/api/quotes/${counter}`
   );
-  console.log(counter);
+  // console.log(counter);
 
   const {author, quote} = !!data && data[0];
 
