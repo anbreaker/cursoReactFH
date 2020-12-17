@@ -10,6 +10,7 @@ import ReactDOM from 'react-dom';
 // import {RealExampleRef} from '././components/04-useRef/RealExampleRef';
 // import {LayoutEffect} from '././components/05-useLayourEffect/LayoutEffect';
 // import {Memorize} from '././components/06-memos/Memorize';
-import {MemoHook} from '././components/06-memos/MemoHook';
+// import {MemoHook} from '././components/06-memos/MemoHook';
+import {CallbackHook} from '././components/06-memos/CallbackHook';
 
-ReactDOM.render(<MemoHook />, document.getElementById('root'));
+ReactDOM.render(<CallbackHook />, document.getElementById('root'));
