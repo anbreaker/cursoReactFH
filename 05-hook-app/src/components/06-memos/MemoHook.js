@@ -1,18 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
 import {useCounter} from '../../hooks/useCounter';
-import {Small} from './Small';
+import {procesoPesado} from '../../helpers/procesoPesado';
 
-export const Memorize = () => {
-  const {counter, increment} = useCounter(10);
+export const MemoHook = () => {
+  const {counter, increment} = useCounter(1000);
   const [show, setShow] = useState(true);
+
+  const memoProcesoPesado = useMemo(() => procesoPesado(counter), [counter]);
 
   return (
     <div className="container">
-      <h1>Memorize</h1>
+      <h1>Memo Hook</h1>
       <hr />
       <h3>
-        Counter: <Small value={counter} />
+        Counter: <small>{counter}</small>
       </h3>
+
+      <p>{memoProcesoPesado}</p>
+
       <button className="btn btn-primary m-2" onClick={increment}>
         +1
       </button>
