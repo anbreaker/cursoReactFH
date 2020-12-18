@@ -5,14 +5,6 @@ import './useReducer.css';
 
 const init = () => {
   return JSON.parse(localStorage.getItem('todos')) || [];
-
-  // return [
-  //   {
-  //     id: new Date().getTime(),
-  //     description: 'Aprender React',
-  //     done: false,
-  //   },
-  // ];
 };
 
 export const TodoApp = () => {
@@ -26,10 +18,19 @@ export const TodoApp = () => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
+  const hadleDelete = (todoId) => {
+    const action = {
+      type: 'delete',
+      payload: todoId,
+    };
+
+    dispatch(action);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (description.trim().length <= 1) return;
+    if (description.trim().length <= 0) return;
 
     const newTodo = {
       id: new Date().getTime(),
@@ -60,7 +61,13 @@ export const TodoApp = () => {
                   {index + 1}.- {todo.description}
                 </p>
 
-                <button className="btn btn-danger">Borrar</button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => {
+                    hadleDelete(todo.id);
+                  }}>
+                  Borrar
+                </button>
               </li>
             ))}
           </ul>
