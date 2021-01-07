@@ -1,4 +1,4 @@
-const {mount, shallow} = require('enzyme');
+const {mount} = require('enzyme');
 const {HomePage} = require('../../../components/09-useContext/HomePage');
 const {UserContext} = require('../../../components/09-useContext/UserContext');
 
