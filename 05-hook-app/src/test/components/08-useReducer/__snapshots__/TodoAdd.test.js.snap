@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en <TodoAdd />  debe de mostarse correctamente 1`] = `
+<Fragment>
+  <h4>
+    Agregar Todo
+  </h4>
+  <hr />
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      autoComplete="off"
+      className="form-control"
+      name="description"
+      onChange={[Function]}
+      placeholder="Tarea a rercordar..."
+      type="text"
+      value=""
+    />
+    <button
+      className="btn btn-primary mt-2 btn-block"
+      type="submit"
+    >
+      Agregar
+    </button>
+  </form>
+</Fragment>
+`;
