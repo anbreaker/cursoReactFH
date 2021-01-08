@@ -40,6 +40,9 @@ export const HeroesPage = ({history}) => {
           <li className="list-groupitem">
             <b>First Appearance: {first_appearance} </b>
           </li>
+          <li className="list-groupitem">
+            <b>Info Id: {id} </b>
+          </li>
         </ul>
 
         <h5>
