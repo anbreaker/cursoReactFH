@@ -6,7 +6,6 @@ export const LoginPage = ({history}) => {
   const {dispatch} = useContext(AuthContext);
 
   const handleClick = () => {
-    history.push('/');
     // history.replace('/');
 
     const action = {
@@ -17,6 +16,7 @@ export const LoginPage = ({history}) => {
     };
 
     dispatch(action);
+    history.push('/');
   };
   return (
     <div className="container">
