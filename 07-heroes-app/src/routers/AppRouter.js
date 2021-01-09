@@ -1,8 +1,7 @@
 import React from 'react';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-
-import {LoginPage} from '../login/LoginPage';
+import {LoginPage} from '../components/login/LoginPage';
 import {DashboardRoutes} from './DashboardRoutes';
 
 export const AppRouter = () => {
