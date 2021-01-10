@@ -9,7 +9,6 @@ export const LoginPage = ({history}) => {
     // history.push('/');
 
     const lastPath = localStorage.getItem('lastPath') || '/';
-    console.log(lastPath, 'ver');
 
     const action = {
       type: types.login,
