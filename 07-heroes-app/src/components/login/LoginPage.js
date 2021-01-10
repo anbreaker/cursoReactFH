@@ -6,7 +6,10 @@ export const LoginPage = ({history}) => {
   const {dispatch} = useContext(AuthContext);
 
   const handleClick = () => {
-    // history.replace('/');
+    // history.push('/');
+
+    const lastPath = localStorage.getItem('lastPath') || '/';
+    console.log(lastPath, 'ver');
 
     const action = {
       type: types.login,
@@ -16,7 +19,8 @@ export const LoginPage = ({history}) => {
     };
 
     dispatch(action);
-    history.push('/');
+
+    history.replace(lastPath);
   };
   return (
     <div className="container">
