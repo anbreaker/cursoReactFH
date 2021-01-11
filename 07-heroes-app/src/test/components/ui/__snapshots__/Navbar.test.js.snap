@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Purebas en <Navbar />  debe de mostrase correctamente 1`] = `
+exports[`Pruebas en el componente <Navbar /> debe de mostrase correctamente 1`] = `
 <nav
   className="navbar navbar-expand-sm navbar-dark bg-dark"
 >

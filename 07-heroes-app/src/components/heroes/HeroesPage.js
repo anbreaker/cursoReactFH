@@ -3,10 +3,12 @@ import {Redirect, useParams} from 'react-router-dom';
 import {getHeroById} from '../../selectors/getHeroById';
 
 export const HeroesPage = ({history}) => {
-  const {heroeId} = useParams();
+  const {heroId} = useParams();
 
   // const hero = getHeroById(heroeId);
-  const hero = useMemo(() => getHeroById(heroeId), [heroeId]);
+  const hero = useMemo(() => getHeroById(heroId), [heroId]);
+  // Info para los test
+  // console.log('Hero: ', hero, 'HeroId: ', heroId);
 
   if (!hero) {
     return <Redirect to="/" />;
@@ -23,7 +25,7 @@ export const HeroesPage = ({history}) => {
     <div className="row mt-5">
       <div className="col-4">
         <img
-          src={`../assets/heroes/${heroeId}.jpg`}
+          src={`../assets/heroes/${heroId}.jpg`}
           alt={superhero}
           className="img-thumbnail animate__animated animate__fadeInLeft"
         />

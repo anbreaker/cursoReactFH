@@ -6,7 +6,7 @@ import {AuthContext} from '../../../auth/AuthContext';
 import {Navbar} from '../../../components/ui/Navbar';
 import {types} from '../../../types/types';
 
-describe('Purebas en <Navbar /> ', () => {
+describe('Pruebas en el componente <Navbar />', () => {
   const historyMock = {
     push: jest.fn(),
     replace: jest.fn(),
