@@ -19,7 +19,6 @@
 .auth__title {
   color: darken($color: $primary, $amount: 20);
   margin-bottom: 20px;
-
 }
 
 .auth_input {
@@ -31,7 +30,7 @@
   height: 20px;
   width: 100%;
 
-  transition: border-bottom .3s ease;
+  transition: border-bottom 0.3s ease;
 
   &:focus {
     border-bottom: 1px solid $primary;
@@ -47,7 +46,6 @@
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
-
 }
 
 .auth__alert-error {
@@ -56,6 +54,6 @@
   color: azure;
   display: flex;
   justify-content: center;
-  margin-bottom:10px ;
+  margin-bottom: 10px;
   padding: 5px;
 }
