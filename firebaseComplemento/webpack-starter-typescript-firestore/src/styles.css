@@ -1,4 +1,5 @@
 /* Este es el estilo del main */
-html, body {
+html,
+body {
     background-color: gray;
 }
