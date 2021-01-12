@@ -2,7 +2,7 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {useForm} from '../../hooks/useForm';
-import {login, startEmailPassword, startGoogleLogin} from '../actions/auth';
+import {startEmailPassword, startGoogleLogin} from '../actions/auth';
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
