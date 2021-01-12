@@ -8,10 +8,7 @@ import validator from 'validator';
 export const RegisterScreen = () => {
   const dispatch = useDispatch();
 
-  const state = useSelector((state) => state);
-  const msgError = 'hola hola';
-
-  console.log(state);
+  const {msgError} = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange] = useForm({
     name: 'anbreaker',
@@ -51,7 +48,6 @@ export const RegisterScreen = () => {
     <>
       <h3 className="auth__title">Register</h3>
       <form onSubmit={handleRegister}>
-        <div className="auth__alert-error">{msgError} ver</div>
         {msgError && <div className="auth__alert-error">{msgError}</div>}
 
         <input
