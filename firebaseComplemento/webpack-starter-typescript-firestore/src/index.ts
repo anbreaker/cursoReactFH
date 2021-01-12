@@ -1,34 +1,48 @@
 import db from './firebase/config';
+import {showDocuments} from './helpers/showDocuments';
 
-const user = {
-  name: 'Curro',
-  active: false,
-  data: 25,
-};
+const usersRef = db.collection('users');
 
-const userRef = db.collection('users');
-// insert into users
-// db.collection('users')
-//   .add(user)
-//   .then((docRef) => {
-//     console.log(docRef.id);
-//   })
-//   .catch((error) => console.log('error', error));
+usersRef.limit(1).get().then(showDocuments);
 
-// userRef.doc('UPjVLD1hSl39Si9L54P0').update({
-//   active: false,
-//   name: 'Magali',
-// })
+// Limit y Pagination
 
-// Modifica la coleccion desturyendo lo que hubiera
-// userRef.doc('UPjVLD1hSl39Si9L54P0').set({
-//   active: false,
-//   name: 'Magali',
-// });
+// btnNext
+const btnNext = document.createElement('button');
+btnNext.innerText = 'Next Page';
+document.body.append(btnNext);
 
-// delete from users where id = 'xx'
-// userRef
-//   .doc('AZSx13PEI1E1lRw1dxKw')
-//   .delete()
-//   .then(() => console.log('delete'))
-//   .catch((error) => console.log('error', error));
+let firstDocument: any = null;
+let lastDocument: any = null;
+btnNext.addEventListener('click', () => {
+  const query = usersRef.orderBy('name').startAfter(lastDocument);
+
+  query
+    .limit(2)
+    .get()
+    .then((snapItem) => {
+      firstDocument = snapItem.docs[0] || null;
+      lastDocument = snapItem.docs[snapItem.docs.length - 1] || null;
+      showDocuments(snapItem);
+    });
+});
+
+btnNext.click();
+
+// btnPrevious
+const btnPrev = document.createElement('button');
+btnPrev.innerText = 'Previous Page';
+document.body.append(btnPrev);
+
+btnPrev.addEventListener('click', () => {
+  const query = usersRef.orderBy('name').endBefore(firstDocument);
+
+  query
+    .limit(2)
+    .get()
+    .then((snapItem) => {
+      firstDocument = snapItem.docs[0] || null;
+      lastDocument = snapItem.docs[snapItem.docs.length - 1] || null;
+      showDocuments(snapItem);
+    });
+});
