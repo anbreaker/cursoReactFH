@@ -1,9 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {removeErrorAction, setErrorAction} from '../actions/ui';
+import {removeErrorAction, setErrorAction} from '../../actions/ui';
 import {useDispatch, useSelector} from 'react-redux';
 import {useForm} from '../../hooks/useForm';
 import validator from 'validator';
+import {startRegisterWithEmailPasswordName} from '../../actions/auth';
 
 export const RegisterScreen = () => {
   const dispatch = useDispatch();
@@ -13,8 +14,8 @@ export const RegisterScreen = () => {
   const [formValues, handleInputChange] = useForm({
     name: 'anbreaker',
     email: 'anbreaker@gmail.com',
-    password: '123',
-    password2: '123',
+    password: '123456',
+    password2: '123456',
   });
 
   const {name, email, password, password2} = formValues;
@@ -22,7 +23,7 @@ export const RegisterScreen = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     if (isFormValid()) {
-      console.log('Formulario Correcto');
+      dispatch(startRegisterWithEmailPasswordName(email, password, name));
     }
   };
 
@@ -33,7 +34,7 @@ export const RegisterScreen = () => {
     } else if (!validator.isEmail(email)) {
       dispatch(setErrorAction('Email is not valid'));
       return false;
-    } else if (password !== password2 || password.length < 3) {
+    } else if (password !== password2 || password.length < 5) {
       dispatch(
         setErrorAction('Password should be at least 6 characters and match each other')
       );
