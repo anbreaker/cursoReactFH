@@ -3,12 +3,12 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 export const firebaseConfig = {
-  apiKey: 'YourApiKEy',
-  authDomain: 'DataGoogle...',
-  projectId: 'react-app-curso-fae04',
-  storageBucket: 'react-app-curso-fae04.appspot.com',
-  messagingSenderId: '6adsf22632',
-  appId: '1:appId32:web:50967cf169396ffc8fa9bd',
+  apiKey: 'AIzaSyDyJCbVHxY_NBeog1WpCFjBRhQlrf4ltwI',
+  authDomain: 'react-app-cursofh-anbreaker.firebaseapp.com',
+  projectId: 'react-app-cursofh-anbreaker',
+  storageBucket: 'react-app-cursofh-anbreaker.appspot.com',
+  messagingSenderId: '893002318061',
+  appId: '1:893002318061:web:ea596b6cbc73c4c5bc0ce4',
 };
 
 // Initialize Firebase
