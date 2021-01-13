@@ -1,6 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {removeErrorAction, setErrorAction} from '../../actions/ui';
+import {
+  finishLoading,
+  removeErrorAction,
+  setErrorAction,
+  startLoading,
+} from '../../actions/ui';
 import {useDispatch, useSelector} from 'react-redux';
 import {useForm} from '../../hooks/useForm';
 import validator from 'validator';
@@ -9,7 +14,7 @@ import {startRegisterWithEmailPasswordName} from '../../actions/auth';
 export const RegisterScreen = () => {
   const dispatch = useDispatch();
 
-  const {msgError} = useSelector((state) => state.ui);
+  const {loading, msgError} = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange] = useForm({
     name: 'anbreaker',
@@ -23,7 +28,9 @@ export const RegisterScreen = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     if (isFormValid()) {
+      dispatch(startLoading());
       dispatch(startRegisterWithEmailPasswordName(email, password, name));
+      dispatch(finishLoading());
     }
   };
 
@@ -85,7 +92,10 @@ export const RegisterScreen = () => {
           value={password2}
           onChange={handleInputChange}
         />
-        <button className="btn btn-primary btn-block mb-5" type="submit">
+        <button
+          className="btn btn-primary btn-block mb-5"
+          type="submit"
+          disabled={loading}>
           Register
         </button>
 
