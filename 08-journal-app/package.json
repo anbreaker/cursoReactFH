@@ -16,6 +16,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "sass": "^1.32.2",
+    "sweetalert2": "^10.13.0",
     "validator": "^13.5.2",
     "web-vitals": "^0.2.4"
   },

@@ -59,7 +59,7 @@ export const RegisterScreen = () => {
         {msgError && <div className="auth__alert-error">{msgError}</div>}
 
         <input
-          className="auth_input"
+          className="auth__input"
           type="text"
           placeholder="Name"
           name="name"
@@ -68,7 +68,7 @@ export const RegisterScreen = () => {
           onChange={handleInputChange}
         />
         <input
-          className="auth_input"
+          className="auth__input"
           type="text"
           placeholder="Email"
           name="email"
@@ -77,7 +77,7 @@ export const RegisterScreen = () => {
           onChange={handleInputChange}
         />
         <input
-          className="auth_input"
+          className="auth__input"
           type="text"
           placeholder="Password"
           name="password"
@@ -85,7 +85,7 @@ export const RegisterScreen = () => {
           onChange={handleInputChange}
         />
         <input
-          className="auth_input"
+          className="auth__input"
           type="text"
           placeholder="Password Confirm"
           name="password2"

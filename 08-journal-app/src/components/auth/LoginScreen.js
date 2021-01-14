@@ -49,7 +49,7 @@ export const LoginScreen = () => {
       <form onSubmit={handleLogin}>
         {msgError && <div className="auth__alert-error">{msgError}</div>}
         <input
-          className="auth_input"
+          className="auth__input"
           type="text"
           placeholder="email"
           name="email"
@@ -58,7 +58,7 @@ export const LoginScreen = () => {
           onChange={handleInputChange}
         />
         <input
-          className="auth_input"
+          className="auth__input"
           type="text"
           placeholder="password"
           name="password"
