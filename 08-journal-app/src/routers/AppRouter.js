@@ -9,6 +9,7 @@ import {PublicRoute} from './PublicRoute';
 
 import {JournalScreen} from '../components/journal/JournalScreen';
 import {login} from '../actions/auth';
+import {startLoadingNotes} from '../actions/notes';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,8 @@ export const AppRouter = () => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         setIsLoggedIn(true);
-        console.log(user.uid, user.displayName, 'esto de aqui...');
+
+        dispatch(startLoadingNotes(user.uid));
       } else {
         setIsLoggedIn(false);
       }
