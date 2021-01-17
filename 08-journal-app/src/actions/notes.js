@@ -8,6 +8,7 @@ export const startNewNote = () => {
     const newNote = {
       title: '',
       body: '',
+      url: '',
       date: new Date().getTime(),
     };
 
