@@ -2,13 +2,21 @@ import React from 'react';
 import dayjs from 'dayjs';
 // advancedFormat permite usar la fecha ordinal entre otras opciones
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import {activeNote} from '../../actions/notes';
+import {useDispatch} from 'react-redux';
 dayjs.extend(advancedFormat);
 
 export const JournalEntry = ({id, date, title, body, url}) => {
+  const dispatch = useDispatch();
   const noteDay = dayjs(date);
 
+  const handleEntryClick = () => {
+    //dispath
+    dispatch(activeNote(id, {id, date, title, body, url}));
+  };
+
   return (
-    <div className="journal__entry pointer">
+    <div className="journal__entry pointer" onClick={handleEntryClick}>
       {url && (
         <div
           className="journal__entry-picture"
