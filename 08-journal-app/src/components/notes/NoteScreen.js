@@ -48,10 +48,7 @@ export const NoteScreen = () => {
 
         {note.url && (
           <div className="notes__image">
-            <img
-              src="https://static.vecteezy.com/system/resources/previews/000/246/312/non_2x/mountain-lake-sunset-landscape-first-person-view-vector.jpg"
-              alt="imagen"
-            />
+            <img src={note.url} alt="imagen" />
           </div>
         )}
       </div>

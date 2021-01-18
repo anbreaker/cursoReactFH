@@ -1,4 +1,6 @@
+import Swal from 'sweetalert2';
 import {db} from '../firebase/firebaseConfig';
+import {fileUpload} from '../helpers/fileUpload';
 import {loadNotes} from '../helpers/loadNotes';
 import {types} from '../types/types';
 
@@ -47,6 +49,46 @@ export const startSaveNote = (note) => {
     const noteToFirestore = {...note};
     delete noteToFirestore.id;
 
-    await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
+    try {
+      await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
+    } catch (error) {
+      console.log(error);
+    }
+    dispatch(refreshNote(note.id, noteToFirestore));
+    Swal.fire('Save', note.title, 'success');
+  };
+};
+
+export const refreshNote = (id, note) => ({
+  type: types.notesUpdated,
+  payload: {
+    id,
+    note: {
+      id,
+      ...note,
+    },
+  },
+});
+
+export const startUploading = (file) => {
+  return async (dispatch, getState) => {
+    const {active: activeNote} = getState().notes;
+
+    Swal.fire({
+      title: 'Uploading...',
+      text: 'Please wait...',
+      allowOutsideClick: false,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
+    //upload
+    const fileUrl = await fileUpload(file);
+    activeNote.url = fileUrl;
+
+    dispatch(startSaveNote(activeNote));
+
+    Swal.close();
   };
 };
