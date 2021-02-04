@@ -55,7 +55,9 @@ export const RegisterScreen = () => {
   return (
     <>
       <h3 className="auth__title">Register</h3>
-      <form onSubmit={handleRegister}>
+      <form
+        onSubmit={handleRegister}
+        className="animate__animated animate__fadeIn animate__faster">
         {msgError && <div className="auth__alert-error">{msgError}</div>}
 
         <input
@@ -67,6 +69,7 @@ export const RegisterScreen = () => {
           value={name}
           onChange={handleInputChange}
         />
+
         <input
           className="auth__input"
           type="text"
@@ -76,6 +79,7 @@ export const RegisterScreen = () => {
           value={email}
           onChange={handleInputChange}
         />
+
         <input
           className="auth__input"
           type="text"
@@ -84,6 +88,7 @@ export const RegisterScreen = () => {
           value={password}
           onChange={handleInputChange}
         />
+
         <input
           className="auth__input"
           type="text"
@@ -92,6 +97,7 @@ export const RegisterScreen = () => {
           value={password2}
           onChange={handleInputChange}
         />
+
         <button
           className="btn btn-primary btn-block mb-5"
           type="submit"

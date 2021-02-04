@@ -46,8 +46,11 @@ export const LoginScreen = () => {
     <>
       <h3 className="auth__title">Login</h3>
 
-      <form onSubmit={handleLogin}>
+      <form
+        onSubmit={handleLogin}
+        className="animate__animated animate__fadeIn animate__faster">
         {msgError && <div className="auth__alert-error">{msgError}</div>}
+
         <input
           className="auth__input"
           type="text"
@@ -57,6 +60,7 @@ export const LoginScreen = () => {
           value={email}
           onChange={handleInputChange}
         />
+
         <input
           className="auth__input"
           type="text"
@@ -65,6 +69,7 @@ export const LoginScreen = () => {
           value={password}
           onChange={handleInputChange}
         />
+
         <button className="btn btn-primary btn-block" type="submit" disabled={loading}>
           Login
         </button>
@@ -79,6 +84,7 @@ export const LoginScreen = () => {
                 alt="google button"
               />
             </div>
+
             <p className="btn-text">
               <b>Sign in with google</b>
             </p>
