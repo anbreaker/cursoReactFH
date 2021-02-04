@@ -93,3 +93,21 @@ export const startUploading = (file) => {
     Swal.close();
   };
 };
+
+export const startDeleting = (id) => {
+  return async (dispatch, getState) => {
+    const uid = getState().auth.uid;
+
+    try {
+      await db.doc(`${uid}/journal/notes/${id}`).delete();
+      dispatch(deleteNote(id));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+};
+
+export const deleteNote = (id) => ({
+  type: types.noteDelete,
+  payload: id,
+});
