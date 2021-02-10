@@ -2,11 +2,11 @@ import Swal from 'sweetalert2';
 import {firebase, googleAuthProvider} from '../firebase/firebaseConfig';
 import {types} from '../types/types';
 import {notesLogout} from './notes';
-import {startLoading, finishLoading} from './ui';
+import {startLoadingAction, finishLoadingAction} from './ui';
 
 export const startLoginEmailPassword = (email, password) => {
   return (dispatch) => {
-    dispatch(startLoading());
+    dispatch(startLoadingAction());
 
     firebase
       .auth()
@@ -14,11 +14,11 @@ export const startLoginEmailPassword = (email, password) => {
       .then(({user}) => {
         dispatch(login(user.uid, user.displayName));
 
-        dispatch(finishLoading());
+        dispatch(finishLoadingAction());
       })
       .catch((error) => {
         console.error('Error ->', error);
-        dispatch(finishLoading());
+        dispatch(finishLoadingAction());
         Swal.fire('Error', error.message, 'error');
       });
   };

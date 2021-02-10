@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {
-  finishLoading,
+  finishLoadingAction,
   removeErrorAction,
   setErrorAction,
-  startLoading,
+  startLoadingAction,
 } from '../../actions/ui';
 import {useDispatch, useSelector} from 'react-redux';
 import {useForm} from '../../hooks/useForm';
@@ -28,9 +28,9 @@ export const RegisterScreen = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     if (isFormValid()) {
-      dispatch(startLoading());
+      dispatch(startLoadingAction());
       dispatch(startRegisterWithEmailPasswordName(email, password, name));
-      dispatch(finishLoading());
+      dispatch(finishLoadingAction());
     }
   };
 
