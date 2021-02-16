@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {BrowserRouter as Router, Switch, Redirect} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import {firebase} from '../firebase/firebaseConfig';
-import {AuthRouter} from './AuthRouter';
-import {PrivateRoute} from './PrivateRoute';
-import {PublicRoute} from './PublicRoute';
+import { firebase } from '../firebase/firebaseConfig';
+import { AuthRouter } from './AuthRouter';
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
-import {JournalScreen} from '../components/journal/JournalScreen';
-import {login} from '../actions/auth';
-import {startLoadingNotes} from '../actions/notes';
+import { JournalScreen } from '../components/journal/JournalScreen';
+import { login } from '../actions/auth';
+import { startLoadingNotes } from '../actions/notes';
 
 export const AppRouter = () => {
   const dispatch = useDispatch();

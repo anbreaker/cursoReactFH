@@ -1,8 +1,8 @@
 import React from 'react';
-import {Redirect, Route} from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-export const PublicRoute = ({isAuthenticate, component: Component, ...rest}) => {
+export const PublicRoute = ({ isAuthenticate, component: Component, ...rest }) => {
   return (
     <Route
       {...rest}

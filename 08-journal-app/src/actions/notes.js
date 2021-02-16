@@ -65,6 +65,8 @@ export const startSaveNote = (note) => {
     } catch (error) {
       console.log(error);
     }
+
+    //Video 264 pregunta
     dispatch(refreshNote(note.id, noteToFirestore));
     Swal.fire('Save', note.title, 'success');
   };
