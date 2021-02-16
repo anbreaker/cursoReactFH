@@ -19,9 +19,9 @@
 .env.production.local
 .eslintcache
 .env
+.env.test
+.env.development
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-firebaseConfig.js
