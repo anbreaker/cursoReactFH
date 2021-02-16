@@ -1,12 +1,13 @@
 import Swal from 'sweetalert2';
-import {db} from '../firebase/firebaseConfig';
-import {fileUpload} from '../helpers/fileUpload';
-import {loadNotes} from '../helpers/loadNotes';
-import {types} from '../types/types';
+import { db } from '../firebase/firebaseConfig';
+import { fileUpload } from '../helpers/fileUpload';
+import { loadNotes } from '../helpers/loadNotes';
+import { types } from '../types/types';
 
 export const startNewNote = () => {
   return async (dispatch, getState) => {
-    const {uid} = getState().auth;
+    const { uid } = getState().auth;
+
     const newNote = {
       title: '',
       body: '',
@@ -52,11 +53,11 @@ export const setNotes = (notes) => ({
 
 export const startSaveNote = (note) => {
   return async (dispatch, getState) => {
-    const {uid} = getState().auth;
+    const { uid } = getState().auth;
 
     if (!note.url) delete note.url;
 
-    const noteToFirestore = {...note};
+    const noteToFirestore = { ...note };
     delete noteToFirestore.id;
 
     try {
@@ -82,7 +83,7 @@ export const refreshNote = (id, note) => ({
 
 export const startUploading = (file) => {
   return async (dispatch, getState) => {
-    const {active: activeNote} = getState().notes;
+    const { active: activeNote } = getState().notes;
 
     Swal.fire({
       title: 'Uploading...',
