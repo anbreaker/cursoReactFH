@@ -1,17 +1,17 @@
 import Swal from 'sweetalert2';
-import {firebase, googleAuthProvider} from '../firebase/firebaseConfig';
-import {types} from '../types/types';
-import {notesLogout} from './notes';
-import {startLoadingAction, finishLoadingAction} from './ui';
+import { firebase, googleAuthProvider } from '../firebase/firebaseConfig';
+import { types } from '../types/types';
+import { notesLogout } from './notes';
+import { startLoadingAction, finishLoadingAction } from './ui';
 
 export const startLoginEmailPassword = (email, password) => {
   return (dispatch) => {
     dispatch(startLoadingAction());
 
-    firebase
+    return firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(({user}) => {
+      .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
 
         dispatch(finishLoadingAction());
@@ -29,8 +29,8 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(async ({user}) => {
-        await user.updateProfile({displayName: name});
+      .then(async ({ user }) => {
+        await user.updateProfile({ displayName: name });
 
         dispatch(login(user.uid, user.displayName));
       })
@@ -46,7 +46,7 @@ export const startGoogleLogin = () => {
     firebase
       .auth()
       .signInWithPopup(googleAuthProvider)
-      .then(({user}) => {
+      .then(({ user }) => {
         dispatch(login(user.uid, user.displayName));
       });
   };
