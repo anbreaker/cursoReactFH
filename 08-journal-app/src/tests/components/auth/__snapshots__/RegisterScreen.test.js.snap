@@ -18,7 +18,7 @@ Array [
       onChange={[Function]}
       placeholder="Name"
       type="text"
-      value=""
+      value="anbreaker"
     />
     <input
       autoComplete="off"
@@ -27,7 +27,7 @@ Array [
       onChange={[Function]}
       placeholder="Email"
       type="text"
-      value=""
+      value="anbreaker@gmail.com"
     />
     <input
       className="auth__input"
@@ -35,7 +35,7 @@ Array [
       onChange={[Function]}
       placeholder="Password"
       type="text"
-      value=""
+      value="123456"
     />
     <input
       className="auth__input"
@@ -43,7 +43,7 @@ Array [
       onChange={[Function]}
       placeholder="Password Confirm"
       type="text"
-      value=""
+      value="123456"
     />
     <button
       className="btn btn-primary btn-block mb-5"

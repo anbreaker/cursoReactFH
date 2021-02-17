@@ -60,8 +60,7 @@ describe('Pruebas en <RegisterScreen />', () => {
 
     expect(actions[0]).toEqual({
       type: types.uiSetError,
-      payload: 'Name is required',
-      // payload: 'Email is not valid',
+      payload: 'Email is not valid',
     });
   });
 });
