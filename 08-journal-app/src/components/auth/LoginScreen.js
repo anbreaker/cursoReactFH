@@ -1,22 +1,22 @@
 import React from 'react';
 import validator from 'validator';
-import {removeErrorAction, setErrorAction} from '../../actions/ui';
-import {useDispatch, useSelector} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {useForm} from '../../hooks/useForm';
-import {startLoginEmailPassword, startGoogleLogin} from '../../actions/auth';
+import { removeErrorAction, setErrorAction } from '../../actions/ui';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm';
+import { startLoginEmailPassword, startGoogleLogin } from '../../actions/auth';
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
 
-  const {msgError, loading} = useSelector((state) => state.ui);
+  const { msgError, loading } = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange] = useForm({
-    email: 'anbreaker@gmail.com',
-    password: '123456',
+    email: '',
+    password: '',
   });
 
-  const {email, password} = formValues;
+  const { email, password } = formValues;
 
   const handleLogin = (event) => {
     event.preventDefault();

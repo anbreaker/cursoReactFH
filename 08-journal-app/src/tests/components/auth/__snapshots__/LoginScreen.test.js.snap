@@ -18,7 +18,7 @@ Array [
       onChange={[Function]}
       placeholder="email"
       type="text"
-      value="anbreaker@gmail.com"
+      value=""
     />
     <input
       className="auth__input"
@@ -26,7 +26,7 @@ Array [
       onChange={[Function]}
       placeholder="password"
       type="text"
-      value="123456"
+      value=""
     />
     <button
       className="btn btn-primary btn-block"

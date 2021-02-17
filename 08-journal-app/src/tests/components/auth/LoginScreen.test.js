@@ -6,10 +6,16 @@ import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import '@testing-library/jest-dom';
 
+import { LoginScreen } from '../../../components/auth/LoginScreen';
+import { startLoginEmailPassword, startGoogleLogin } from '../../../actions/auth';
+
+jest.mock('../../../actions/auth', () => ({
+  startGoogleLogin: jest.fn(),
+  startLoginEmailPassword: jest.fn(),
+}));
+
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
-
-import { LoginScreen } from '../../../components/auth/LoginScreen';
 
 const initState = {
   auth: {},
@@ -19,8 +25,8 @@ const initState = {
   },
 };
 
-// Nuestro store
 let store = mockStore(initState);
+store.dispatch = jest.fn();
 
 const wrapper = mount(
   <Provider store={store}>
@@ -34,9 +40,26 @@ describe('Pruebas en LoginScreen', () => {
   // Limpiar las acciones o dispatch que almacena el store
   beforeEach(() => {
     store = mockStore(initState);
+    jest.clearAllMocks();
   });
 
   test('debe mostrarse correctamente ', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  test('debe disparar la accion startGoogleLogin', () => {
+    wrapper.find('.google-btn').prop('onClick')();
+
+    expect(startGoogleLogin).toHaveBeenCalled();
+  });
+
+  /*
+  test('debe de disparar el startLogin con los respectivos argumentos', () => {
+    wrapper.find('form').prop('onSubmit')({
+      preventDefault() {},
+    });
+
+    expect(startLoginEmailPassword).toHaveBeenLastCalledWith('', '');
+  });
+  */
 });

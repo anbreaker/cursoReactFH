@@ -1,29 +1,29 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   finishLoadingAction,
   removeErrorAction,
   setErrorAction,
   startLoadingAction,
 } from '../../actions/ui';
-import {useDispatch, useSelector} from 'react-redux';
-import {useForm} from '../../hooks/useForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { useForm } from '../../hooks/useForm';
 import validator from 'validator';
-import {startRegisterWithEmailPasswordName} from '../../actions/auth';
+import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
 export const RegisterScreen = () => {
   const dispatch = useDispatch();
 
-  const {loading, msgError} = useSelector((state) => state.ui);
+  const { loading, msgError } = useSelector((state) => state.ui);
 
   const [formValues, handleInputChange] = useForm({
-    name: 'anbreaker',
-    email: 'anbreaker@gmail.com',
-    password: '123456',
-    password2: '123456',
+    name: '',
+    email: '',
+    password: '',
+    password2: '',
   });
 
-  const {name, email, password, password2} = formValues;
+  const { name, email, password, password2 } = formValues;
 
   const handleRegister = (event) => {
     event.preventDefault();
