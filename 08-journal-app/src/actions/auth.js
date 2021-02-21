@@ -46,9 +46,8 @@ export const startGoogleLogin = () => {
     firebase
       .auth()
       .signInWithPopup(googleAuthProvider)
-      .then(({ user }) => {
-        dispatch(login(user.uid, user.displayName));
-      });
+      .then(({ user }) => dispatch(login(user.uid, user.displayName)))
+      .catch((error) => console.log(error));
   };
 };
 
