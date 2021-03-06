@@ -1,13 +1,13 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {startSaveNote, startUploading} from '../../actions/notes';
+import { useDispatch, useSelector } from 'react-redux';
+import { startSaveNote, startUploading } from '../../actions/notes';
 
-export const NotesAppBar = () => {
+export const NotesAppBar = ({ reset }) => {
   const dispatch = useDispatch();
-  const {active: note} = useSelector((state) => state.notes);
+  const { active } = useSelector((state) => state.notes);
 
   const handleSave = () => {
-    dispatch(startSaveNote(note));
+    dispatch(startSaveNote(active));
   };
 
   const handlePicutreUpload = () => {
@@ -17,6 +17,7 @@ export const NotesAppBar = () => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) dispatch(startUploading(file));
+    reset(active);
   };
 
   return (
@@ -27,7 +28,7 @@ export const NotesAppBar = () => {
         id="fileSelector"
         type="file"
         name="file"
-        style={{display: 'none'}}
+        style={{ display: 'none' }}
         onChange={handleFileChange}
       />
 

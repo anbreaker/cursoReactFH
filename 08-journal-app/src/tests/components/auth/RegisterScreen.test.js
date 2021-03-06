@@ -10,10 +10,10 @@ import '@testing-library/jest-dom';
 import { RegisterScreen } from '../../../components/auth/RegisterScreen';
 import { types } from '../../../types/types';
 
-// jest.mock('../../../actions/auth', () => ({
-//     startGoogleLogin: jest.fn(),
-//     startLoginEmailPassword: jest.fn(),
-// }))
+jest.mock('../../../actions/auth', () => ({
+  startGoogleLogin: jest.fn(),
+  startLoginEmailPassword: jest.fn(),
+}));
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
@@ -63,9 +63,6 @@ describe('Pruebas en <RegisterScreen />', () => {
       payload: 'Email is not valid',
     });
   });
-});
-
-/*
 
   test('debe de mostrar la caja de alerta con el error', () => {
     const initState = {
@@ -89,4 +86,4 @@ describe('Pruebas en <RegisterScreen />', () => {
     expect(wrapper.find('.auth__alert-error').exists()).toBe(true);
     expect(wrapper.find('.auth__alert-error').text().trim()).toBe(initState.ui.msgError);
   });
-*/
+});
