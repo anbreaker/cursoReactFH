@@ -17,7 +17,7 @@
     "react-scripts": "^4.0.3",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "sweetalert2": "^9.14.3"
+    "sweetalert2": "^9.17.2"
   },
   "scripts": {
     "start": "react-scripts start",
