@@ -54,6 +54,7 @@ const deadpool = {
   getName: function () {
     return `\n${this.name} ${this.surname}`;
   },
+  // Con esta funcion el this apunta a globas (el window en Node)
   getPow() {
     return `poder: ${this.pow}`;
   },
