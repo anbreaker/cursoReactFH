@@ -1,5 +1,5 @@
 import cloudinary from 'cloudinary';
-import {fileUpload} from '../../helpers/fileUpload';
+import { fileUpload } from '../../helpers/fileUpload';
 
 cloudinary.config({
   cloud_name: process.env.REACT_APP_CLOUD_NAME,
@@ -10,7 +10,7 @@ cloudinary.config({
 describe('pruebas en fileUpload', () => {
   test('debe cargar un archivo y retornar el URL', async (done) => {
     const imgUrl =
-      'https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png';
+      'https://19yw4b240vb03ws8qm25h366-wpengine.netdna-ssl.com/wp-content/uploads/10-Free-To-Use-CORS-Proxies-1024x768.png';
     const response = await fetch(imgUrl);
 
     const blob = await response.blob();
