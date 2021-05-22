@@ -6,6 +6,7 @@ import moment from 'moment';
 import Swal from 'sweetalert2';
 
 import { uiCloseModalAction } from '../../actions/ui';
+import { eventAddNey } from '../../actions/events';
 
 const customStyles = {
   content: {
@@ -83,6 +84,16 @@ export const CalendarModal = () => {
     }
 
     // TODO guardar en base de datos
+    dispatch(
+      eventAddNey({
+        ...formValues,
+        id: new Date().getTime(),
+        user: {
+          _id: '123example',
+          name: 'anbreaker',
+        },
+      })
+    );
 
     setTitleValid(true);
     closeModal();
