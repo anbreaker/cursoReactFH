@@ -6,7 +6,7 @@ import moment from 'moment';
 import Swal from 'sweetalert2';
 
 import { uiCloseModalAction } from '../../actions/ui';
-import { eventAddNey, eventClearActiveEvent, eventUpdated } from '../../actions/events';
+import { eventAddedNew, eventClearActiveEvent, eventUpdated } from '../../actions/events';
 
 const customStyles = {
   content: {
@@ -46,6 +46,7 @@ export const CalendarModal = () => {
 
   useEffect(() => {
     if (activeEvent) setFormValues(activeEvent);
+    else setFormValues(initEvent);
   }, [activeEvent, setFormValues]);
 
   const handleInputChange = ({ target }) => {
@@ -97,7 +98,7 @@ export const CalendarModal = () => {
     if (activeEvent) dispatch(eventUpdated(formValues));
     else {
       dispatch(
-        eventAddNey({
+        eventAddedNew({
           ...formValues,
           id: new Date().getTime(),
           user: {
@@ -120,7 +121,7 @@ export const CalendarModal = () => {
       closeTimeoutMS={200}
       className="modal"
       overlayClassName="modal-fondo">
-      <h1> Nuevo evento </h1>
+      <h1>{activeEvent ? 'Editar Evento' : 'Nuevo Evento'} </h1>
       <hr />
 
       <form className="container" onSubmit={handleSubmitForm}>
