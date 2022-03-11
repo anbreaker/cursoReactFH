@@ -1,0 +1,1 @@
+{"version":3,"file":"greetingsMiddleware.js","sourceRoot":"","sources":["../../src/middlewares/greetingsMiddleware.ts"],"names":[],"mappings":";;;AAEO,MAAM,mBAAmB,GAAG,CAAC,GAAY,EAAE,GAAa,EAAE,IAAkB,EAAE,EAAE;IACrF,OAAO,CAAC,GAAG,CAAC,0CAA0C,CAAC,CAAC;IAExD,IAAI,EAAE,CAAC;AACT,CAAC,CAAC;AAJW,QAAA,mBAAmB,uBAI9B"}
