@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Esqueleto de proyecto React con TypeScript y Vite buenas prácticas 📓
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Jerarquía del proyecto y buenas prácticas
 
-## Available Scripts
+## Instalación ⚙️
 
-In the project directory, you can run:
+Con este comando se instalan todas las dependencias del proyecto (package.json). La bandera "--legacy-peer-deps" evita posibles conflictos de versiones
 
-### `npm start`
+```bash
+npm i --legacy-peer-deps
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Si se requieren nuevas dependencias, se deberán de instalar (IMPORTANTE : **Comprobar versiones y compatibilidades**)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm i "DEPENDENCIA1" "DEPENDENCIA2" ... --save
+```
 
-### `npm test`
+Para iniciar el proyecto de React TS basta con ejecutar los comandos contenido en el package.json: - Modo desarrollador:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+    npm run dev
+```
 
-### `npm run build`
+## Jerarquía de directorios 🗂️
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Directorio "public"**
+   En este directorio se definen los assets (todos los elementos estáticos, imágenes, vectores...), trabajando con Vite, el único archivo estático que esta fuera de este directorio es **index.html** que está alojado a la misma altura que public o sur.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Directorio "src"**
+   Aloja toda la lógica de nuestra aplicación frontend en React.
+   Inicialmente contiene un árbol de directorios definido para todos nuestros proyectos (para seguir siempre la misma metodología de trabajo). Se describen los directorios, tratando de seguir la guía de buenas Prácticas de React:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   1 - **auth**
 
-### `npm run eject`
+   - Se crearán todos los ficheros relacionados con la autenticación en la app.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   2- **components**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   - Carpeta donde irán todos los componentes, se crearan en PascalCase.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   3- **context**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+   - Zona donde crearemos los distintos contextos de nuestra app, (según sea necesario)
 
-## Learn More
+   4- **helpers**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   - Códigos reutilizables y no relacionados directamente con las vistas u otros componentes.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   5- **interfaces**
 
-### Code Splitting
+   - Al utilizar **_TypeScript_** trataremos de centralizar los interfaces en este directorio.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+   6- **i18n**
 
-### Analyzing the Bundle Size
+   - Pre-configuracion para el multi-idioma de nuestras apps.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   7- **hooks**
 
-### Making a Progressive Web App
+   - Los hooks son funciones directamente relacionadas con las vistas y los componentes, pero son elementos reutilizables, siguen la lógica de React. Estos hooks se crearán en camelCase.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   8- **pages**
 
-### Advanced Configuration
+   - Las vistas principales de la app, ejemplo **_LoginPage.tsx_**. Todas las vistas se crearán en PascalCase y con el apellido Page, para diferenciar de un vistazo de un componente.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   9- **reducers / store**
 
-### Deployment
+   - Dependiendo de la funcionalidad de la app, utilizaremos Redux o el API propio de react con sus reducers (ambos puedes convivir) En estas carpetas se manejará el estado global de la aplicación.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   10- **routers**
 
-### `npm run build` fails to minify
+   - Seguiremos el siguiente patrón, para verificar los distintos accesos a las partes de la aplicación, según los roles de los usuarios. Tenemos un interceptor de rutas Públicas y Privadas, un Enrutador general **_AppRouter.tsx_**, otro personalizado **_DashboardRouter.tsx_** que es quien comprueba los roles y redirige.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   11- **styles**
+
+   - Los ficheros de estilos scss irán alojadas en este directorio, trataremos de seguir un orden parecido a la estructura de componentes que seguimos en el proyecto.
+
+   12- **types**
+
+   - Contiene los distintos tipos de acciones relacionadas con los reducers.
