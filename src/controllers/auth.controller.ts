@@ -21,7 +21,7 @@ export const createUser = async (req: Request, res: Response) => {
 
     let user = await User.findOne({ email });
 
-    if (user) return res.status(400).json({ ok: false, message: 'User already exists' });
+    if (user) return res.status(400).json({ ok: false, msg: 'User already exists' });
 
     user = new User(req.body);
 
@@ -31,7 +31,7 @@ export const createUser = async (req: Request, res: Response) => {
 
     return res
       .status(201)
-      .json({ msg: 'Create User', uid: user.id, name: user.name, token });
+      .json({ ok: true, msg: 'Create User', uid: user.id, name: user.name, token });
   } catch (error) {
     res.status(500).json({ msg: 'Please talk with support' });
     console.log(error);
@@ -45,18 +45,19 @@ export const loginUser = async (req: Request, res: Response) => {
     const user = await User.findOne({ email });
 
     if (!user)
-      return res.status(400).json({ ok: false, message: 'User or password incorrect' });
+      return res.status(400).json({ ok: false, msg: 'User or password incorrect' });
 
     const passwordValid = await user.checkPassword(password);
     if (!passwordValid)
-      return res.status(400).json({ ok: false, message: 'Password incorrect' });
+      return res.status(400).json({ ok: false, msg: 'Password incorrect' });
 
     const token = generateJWT(user.id, user.name);
 
     return res.json({
       ok: true,
-      message: 'Login User',
-      name,
+      msg: 'Login User',
+      name: user.name,
+      uid: user.id,
       email,
       password: user.password,
       token,
@@ -74,7 +75,7 @@ export const renewToken = (req: CustomRequest, res: Response) => {
 
     const token = generateJWT(uid, name!);
 
-    return res.json({ ok: true, token });
+    return res.json({ ok: true, uid, name, token });
   } catch (error) {
     console.log(error);
   }

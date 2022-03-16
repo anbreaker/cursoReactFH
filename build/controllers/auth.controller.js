@@ -19,13 +19,13 @@ const createUser = async (req, res) => {
         const { email } = req.body;
         let user = await User_model_1.User.findOne({ email });
         if (user)
-            return res.status(400).json({ ok: false, message: 'User already exists' });
+            return res.status(400).json({ ok: false, msg: 'User already exists' });
         user = new User_model_1.User(req.body);
         await user.save();
         const token = (0, jwt_1.generateJWT)(user.id, user.name);
         return res
             .status(201)
-            .json({ msg: 'Create User', uid: user.id, name: user.name, token });
+            .json({ ok: true, msg: 'Create User', uid: user.id, name: user.name, token });
     }
     catch (error) {
         res.status(500).json({ msg: 'Please talk with support' });
@@ -38,15 +38,16 @@ const loginUser = async (req, res) => {
     try {
         const user = await User_model_1.User.findOne({ email });
         if (!user)
-            return res.status(400).json({ ok: false, message: 'User or password incorrect' });
+            return res.status(400).json({ ok: false, msg: 'User or password incorrect' });
         const passwordValid = await user.checkPassword(password);
         if (!passwordValid)
-            return res.status(400).json({ ok: false, message: 'Password incorrect' });
+            return res.status(400).json({ ok: false, msg: 'Password incorrect' });
         const token = (0, jwt_1.generateJWT)(user.id, user.name);
         return res.json({
             ok: true,
-            message: 'Login User',
-            name,
+            msg: 'Login User',
+            name: user.name,
+            uid: user.id,
             email,
             password: user.password,
             token,
@@ -63,7 +64,7 @@ const renewToken = (req, res) => {
         if (!uid || !name)
             return res.status(500).json({ error: 'Error in server' });
         const token = (0, jwt_1.generateJWT)(uid, name);
-        return res.json({ ok: true, token });
+        return res.json({ ok: true, uid, name, token });
     }
     catch (error) {
         console.log(error);
