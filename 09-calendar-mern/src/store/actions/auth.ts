@@ -3,6 +3,7 @@ import 'sweetalert2/dist/sweetalert2.css';
 
 import { fetchWithoutToken, fetchWithToken } from '../../helpers/fetch';
 import { types } from '../../types/types';
+import { eventLogout } from './events';
 
 export const startLogin = (email: string, password: string) => {
   return async (dispatch: any) => {
@@ -81,6 +82,8 @@ export const startLogout = () => {
     localStorage.clear();
 
     dispatch(logout());
+
+    dispatch(eventLogout());
   };
 };
 
